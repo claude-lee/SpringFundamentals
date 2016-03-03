@@ -1,9 +1,9 @@
-package com.pluralsight.repository;
+package com.netsight.repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.pluralsight.model.Customer;
+import com.netsight.model.Customer;
 
 public class HibernateCustomerRepositoryImpl implements CustomerRepository {
 
@@ -13,8 +13,8 @@ public class HibernateCustomerRepositoryImpl implements CustomerRepository {
 		
 		Customer customer = new Customer();
 		
-		customer.setFirstname("Bryan");
-		customer.setLastname("Hansen");
+		customer.setFirstname("Hanna");
+		customer.setLastname("Hansson");
 		
 		customers.add(customer);
 		

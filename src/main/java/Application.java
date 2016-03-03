@@ -1,5 +1,5 @@
-import com.pluralsight.service.CustomerService;
-import com.pluralsight.service.CustomerServiceImpl;
+import com.netsight.service.CustomerService;
+import com.netsight.service.CustomerServiceImpl;
 
 
 public class Application {

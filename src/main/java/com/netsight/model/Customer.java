@@ -1,4 +1,4 @@
-package com.pluralsight.model;
+package com.netsight.model;
 
 public class Customer {
 

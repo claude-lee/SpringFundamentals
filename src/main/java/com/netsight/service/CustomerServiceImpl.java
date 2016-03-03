@@ -1,10 +1,10 @@
-package com.pluralsight.service;
+package com.netsight.service;
 
 import java.util.List;
 
-import com.pluralsight.model.Customer;
-import com.pluralsight.repository.CustomerRepository;
-import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
+import com.netsight.model.Customer;
+import com.netsight.repository.CustomerRepository;
+import com.netsight.repository.HibernateCustomerRepositoryImpl;
 
 public class CustomerServiceImpl implements CustomerService {
 

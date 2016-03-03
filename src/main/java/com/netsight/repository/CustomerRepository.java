@@ -1,8 +1,8 @@
-package com.pluralsight.repository;
+package com.netsight.repository;
 
 import java.util.List;
 
-import com.pluralsight.model.Customer;
+import com.netsight.model.Customer;
 
 public interface CustomerRepository {
 

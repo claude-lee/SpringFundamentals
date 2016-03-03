@@ -1,8 +1,8 @@
-package com.pluralsight.service;
+package com.netsight.service;
 
 import java.util.List;
 
-import com.pluralsight.model.Customer;
+import com.netsight.model.Customer;
 
 public interface CustomerService {
 
