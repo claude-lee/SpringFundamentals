@@ -1,3 +1,5 @@
+package com.netsight;
+
 import com.netsight.service.CustomerService;
 import com.netsight.service.CustomerServiceImpl;
 
