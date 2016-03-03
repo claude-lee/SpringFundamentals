@@ -5,10 +5,10 @@ public class Customer {
 	private String firstname;
 	private String lastname;
 
-	public Customer () {
-		
+	public Customer() {
+
 	}
-	
+
 	public String getFirstname() {
 		return firstname;
 	}
