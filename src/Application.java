@@ -4,9 +4,6 @@ import com.pluralsight.service.CustomerServiceImpl;
 
 public class Application {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		CustomerService service = new CustomerServiceImpl();
 		
