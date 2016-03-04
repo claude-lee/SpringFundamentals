@@ -24,7 +24,7 @@ public class Application {
 
 		config.setName("inject with xml annotation configuration");
 		config.setContext(new ClassPathXmlApplicationContext("com/netsight/app/applicationContextAnnotationConfig.xml"));
-		config.setBeanName("customerServiceJavaConfig");
+		config.setBeanName("customerServiceAnnotationConfig");
 		inject(config);
 		
 		

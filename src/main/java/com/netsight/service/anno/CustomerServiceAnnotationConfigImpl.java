@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.netsight.model.Customer;
 import com.netsight.repository.CustomerRepository;
 import com.netsight.service.CustomerService;
+import com.netsight.utilities.LogSTS;
 /**
  * 
  * @author clei
@@ -26,23 +27,24 @@ public class CustomerServiceAnnotationConfigImpl implements CustomerService {
 	
 	
 	public CustomerServiceAnnotationConfigImpl(){
-		
+		LogSTS.log();
 	}
 	
 	@Autowired
 	public CustomerServiceAnnotationConfigImpl(CustomerRepository customerRepository){
-		System.out.println("CustomerServiceAnnotationConfigImpl: Using Constructor Injection");
+		LogSTS.log();
 		this.customerRepository = customerRepository;
 	}
 	
 	
 	public void setCustomerRepository(CustomerRepository customerRepository) {
-		System.out.println("CustomerServiceAnnotationConfigImpl: Using Setter Injection");
+		LogSTS.log();
 		this.customerRepository = customerRepository;
 	}
 
 
 	public List<Customer> findAll() {
+		LogSTS.log();
 		return customerRepository.findAll();
 	}
 

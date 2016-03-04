@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.netsight.model.Customer;
 import com.netsight.repository.CustomerRepository;
 import com.netsight.service.CustomerService;
+import com.netsight.utilities.LogSTS;
 
 @Service("customerServiceJavaConfig")
 public class CustomerServiceJavaConfigImpl implements CustomerService {
@@ -17,28 +18,30 @@ public class CustomerServiceJavaConfigImpl implements CustomerService {
 	
 	
 	public CustomerServiceJavaConfigImpl() {
+		LogSTS.log();
 	}
 	
 	
 	public CustomerServiceJavaConfigImpl(CustomerRepository customerRepository) {
-		System.out.println("CustomerServiceJavaConfigImpl: Using Constructor Injection");
+		LogSTS.log();
 		this.customerRepository = customerRepository;
 	}
 
 	
 	public void setCustomerRepository(CustomerRepository customerRepository) {
-		System.out.println("CustomerServiceJavaConfigImpl: Using Setter Injection");
+		LogSTS.log();
 		this.customerRepository = customerRepository;
 		
 	}
 	
-	public CustomerRepository sgtCustomerRepository() {
-		System.out.println("CustomerServiceJavaConfigImpl: Using Getter Injection");
+	public CustomerRepository getCustomerRepository() {
+		LogSTS.log();
 		return customerRepository;
 		
 	}
 
 	public List<Customer> findAll() {
+		LogSTS.log();
 		return customerRepository.findAll();
 	}
 
