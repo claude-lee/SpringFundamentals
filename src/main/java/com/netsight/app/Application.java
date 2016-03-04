@@ -1,11 +1,13 @@
 package com.netsight.app;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.netsight.model.Customer;
 import com.netsight.service.CustomerService;
 import com.netsight.service.anno.CustomerServiceAnnotationConfig;
+import com.netsight.service.java.CustomerServiceJavaConfig;
 
 public class Application {
 
@@ -15,10 +17,20 @@ public class Application {
 		
 		injectWithXml(appContextXml);
 		injectWithAnnotationContext(appContextAnnotationConfig);
+		injectWithJavaConfig();
 		
 	}
 	
 	
+	private static void injectWithJavaConfig() {
+		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
+		CustomerServiceJavaConfig service = appContext.getBean("customerServiceJavaConfig", CustomerServiceJavaConfig.class);
+		Customer c =  service.findAll().get(0);
+		System.out.println("injectWithJavaConfig: " + c.getFirstname()+ " " + c.getLastname());
+		
+	}
+
+
 	private static void injectWithXml(String appContextFile){
 		ApplicationContext appContext = new ClassPathXmlApplicationContext(appContextFile);
 		CustomerService service = appContext.getBean("customerService", CustomerService.class);

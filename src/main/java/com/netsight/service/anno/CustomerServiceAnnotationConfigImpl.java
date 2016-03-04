@@ -24,10 +24,14 @@ public class CustomerServiceAnnotationConfigImpl implements CustomerServiceAnnot
 	private CustomerRepository customerRepository;
 	
 	
-//	public CustomerServiceAnnotationConfigImpl(CustomerRepository customerRepository){
-//		System.out.println("CustomerServiceAnnotationConfigImpl: Using Constructor Injection");
-//		this.customerRepository = customerRepository;
-//	}
+	public CustomerServiceAnnotationConfigImpl(){
+		
+	}
+	
+	public CustomerServiceAnnotationConfigImpl(CustomerRepository customerRepository){
+		System.out.println("CustomerServiceAnnotationConfigImpl: Using Constructor Injection");
+		this.customerRepository = customerRepository;
+	}
 	
 	
 	public void setCustomerRepository(CustomerRepository customerRepository) {
