@@ -1,48 +1,49 @@
 package com.netsight.app;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.netsight.context.ApplicationContextConfig;
 import com.netsight.model.Customer;
 import com.netsight.service.CustomerService;
-import com.netsight.service.anno.CustomerServiceAnnotationConfig;
-import com.netsight.service.java.CustomerServiceJavaConfig;
 
+@Configuration
+@ComponentScan({"com.netsight"})
 public class Application {
 
 	public static void main(String[] args) {
-		String appContextXml = "com/netsight/app/applicationContext.xml";
-		String appContextAnnotationConfig = "com/netsight/app/applicationContextAnnotationConfig.xml";
+
+		ApplicationContextConfig config = new ApplicationContextConfig();
 		
-		injectWithXml(appContextXml);
-		injectWithAnnotationContext(appContextAnnotationConfig);
-		injectWithJavaConfig();
+		config.setName("inject with pure xml configuration");
+		config.setContext(new ClassPathXmlApplicationContext("com/netsight/app/applicationContext.xml"));
+		config.setBeanName("customerService");
+		inject(config);
+
+		config.setName("inject with xml annotation configuration");
+		config.setContext(new ClassPathXmlApplicationContext("com/netsight/app/applicationContextAnnotationConfig.xml"));
+		config.setBeanName("customerServiceJavaConfig");
+		inject(config);
 		
-	}
-	
-	
-	private static void injectWithJavaConfig() {
-		ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
-		CustomerServiceJavaConfig service = appContext.getBean("customerServiceJavaConfig", CustomerServiceJavaConfig.class);
-		Customer c =  service.findAll().get(0);
-		System.out.println("injectWithJavaConfig: " + c.getFirstname()+ " " + c.getLastname());
 		
+		config.setName("inject with pure Java configuration");
+		config.setContext(new AnnotationConfigApplicationContext(Application.class));
+		config.setBeanName("customerServiceJavaConfig");
+		inject(config);
+		
+
+
 	}
 
 
-	private static void injectWithXml(String appContextFile){
-		ApplicationContext appContext = new ClassPathXmlApplicationContext(appContextFile);
-		CustomerService service = appContext.getBean("customerService", CustomerService.class);
+	private static void inject(ApplicationContextConfig config){
+		CustomerService service = config.getContext().getBean(config.getBeanName(), CustomerService.class);
 		Customer c =  service.findAll().get(0);
-		System.out.println("injectWithXml: " + c.getFirstname()+ " " + c.getLastname());
+		System.out.println(config.getName() + ": " + c.getFirstname()+ " " + c.getLastname());
+		System.out.println("\n-----" + config.getName()+ "--- finished ----\n");
 	}
-	
-	private static void injectWithAnnotationContext(String appContextFile){
-		ApplicationContext appContext = new ClassPathXmlApplicationContext(appContextFile);
-		CustomerServiceAnnotationConfig service = appContext.getBean("customerServiceAnnotationConfig", CustomerServiceAnnotationConfig.class);
-		Customer c =  service.findAll().get(0);
-		System.out.println("injectWithAnnotationContext: " + c.getFirstname()+ " " + c.getLastname());
-	}
+
 
 }

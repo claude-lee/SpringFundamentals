@@ -6,7 +6,6 @@
 	<bean name="customerRepository" class="com.netsight.repository.HibernateCustomerRepositoryImpl" />
 	
 	<bean name="customerService" class="com.netsight.service.CustomerServiceImpl" autowire="byName" >
-		<!-- <constructor-arg index="0" ref="customerRepository" />  -->
 	</bean>
 
 </beans>

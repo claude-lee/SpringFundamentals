@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.netsight.model.Customer;
 import com.netsight.repository.CustomerRepository;
+import com.netsight.service.CustomerService;
 /**
  * 
  * @author clei
@@ -17,10 +18,10 @@ import com.netsight.repository.CustomerRepository;
  *
  */
 @Service("customerServiceAnnotationConfig")
-public class CustomerServiceAnnotationConfigImpl implements CustomerServiceAnnotationConfig {
+public class CustomerServiceAnnotationConfigImpl implements CustomerService {
 	
 	
-	@Autowired
+	
 	private CustomerRepository customerRepository;
 	
 	
@@ -28,6 +29,7 @@ public class CustomerServiceAnnotationConfigImpl implements CustomerServiceAnnot
 		
 	}
 	
+	@Autowired
 	public CustomerServiceAnnotationConfigImpl(CustomerRepository customerRepository){
 		System.out.println("CustomerServiceAnnotationConfigImpl: Using Constructor Injection");
 		this.customerRepository = customerRepository;
